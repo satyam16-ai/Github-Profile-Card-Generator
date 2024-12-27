@@ -250,25 +250,34 @@ footer p {
     }
 
     input[type="text"] {
-        width: 250px;
+        width: 100%; /* Make input full width */
         padding: 15px;
         margin-bottom: 10px; /* Add margin for spacing */
     }
 
     button {
         padding: 15px 25px;
+        width: 100%; /* Make button full width */
         margin-bottom: 10px; /* Add margin for spacing */
     }
 
     select {
         padding: 15px;
+        width: 100%; /* Make select full width */
+        margin-bottom: 10px; /* Add margin for spacing */
     }
 
     footer {
         padding: 15px;
+        /* restrict text overflow */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
     }
 
     footer p {
         font-size: 0.9rem;
+        word-wrap: break-word; /* Ensure text wraps within the footer */
     }
 }
