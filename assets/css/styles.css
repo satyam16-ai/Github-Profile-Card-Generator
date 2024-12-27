@@ -18,6 +18,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden; /* Remove horizontal scrollbar */
+    padding-bottom: 60px; /* Space for the fixed footer */
 }
 
 .github-wrapped-card {
@@ -196,15 +197,16 @@ select {
 
 footer {
     text-align: center;
-    padding: 20px;
     background-color: var(--secondary-bg);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     color: var(--text-color);
     width: 100%;
-    margin-top: auto;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     z-index: 1;
+    padding: 15px 0;
 }
 
 footer.light-theme {
