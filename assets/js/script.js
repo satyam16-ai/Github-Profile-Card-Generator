@@ -177,7 +177,7 @@ function shareWrapped() {
                     files: filesArray,
                     title: 'GitHub 2024 Wrapped',
                     text: 'Check out my GitHub 2024 Wrapped!',
-                    url: 'https://yourwebsite.com'
+                    url: 'https://github-2024-recap.netlify.app/'
                 });
             } else {
                 alert('Your browser does not support sharing files.');
