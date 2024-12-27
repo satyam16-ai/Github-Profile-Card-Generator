@@ -1,6 +1,5 @@
 async function fetchToken() {
-    // Fetch the token from a secure location or environment variable
-    const response = await fetch('/path/to/your/token/endpoint');
+    const response = await fetch('/.netlify/functions/get-token');
     const data = await response.json();
     return data.token;
 }
