@@ -196,13 +196,15 @@ select {
 
 footer {
     text-align: center;
-    margin-top: auto;
     padding: 20px;
     background-color: var(--secondary-bg);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     color: var(--text-color);
     width: 100%;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
 }
 
 footer.light-theme {
