@@ -270,10 +270,9 @@ footer p {
     footer {
         padding: 15px;
         /* restrict text overflow */
-        white-space: nowrap;
+        white-space: normal; /* Allow text to wrap */
         overflow: hidden;
         text-overflow: ellipsis;
-        
     }
 
     footer p {
