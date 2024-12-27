@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 2024 Wrapped</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <div class="input-section">
+        <input type="text" id="username" placeholder="Enter GitHub Username" />
+        <button onclick="fetchData()">Generate 2024 Wrapped</button>
+        <select id="colorSelector" onchange="changeCardColor()" title="Select a color theme">
+            <option value="#0d1117">GitHub Dark</option>
+            <option value="#161b22">Dark Gray</option>
+            <option value="#1e1e1e">Black</option>
+            <option value="#2d2d2d">Charcoal</option>
+            <option value="#ffffff">Light</option> <!-- Light theme option -->
+        </select>
+    </div>
+
+    <div id="card"></div>
+
+    <footer>
+        <p>GitHub 2024 Wrapped is a fun way to see your GitHub activity for the year. Enter your GitHub username to generate your personalized report.</p>
+        <p>Created by SATYAM TIWARI.</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>

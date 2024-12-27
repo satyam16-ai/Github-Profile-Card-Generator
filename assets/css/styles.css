@@ -1,0 +1,270 @@
+:root {
+    --primary-bg: #0d1117;
+    --secondary-bg: #161b22;
+    --text-color: #c9d1d9;
+    --accent-color: #58a6ff;
+    --light-bg: #ffffff;
+    --light-secondary-bg: #f0f0f0;
+    --light-text-color: #333333;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Remove horizontal scrollbar */
+}
+
+.github-wrapped-card {
+    background-color: var(--secondary-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 700px;
+    margin: 20px auto;
+    color: var(--text-color);
+    position: relative; /* Add relative positioning */
+    overflow: hidden; /* Ensure child elements are contained */
+}
+
+.github-wrapped-card.light-theme {
+    background-color: var(--light-secondary-bg);
+    color: var(--light-text-color);
+}
+
+.github-wrapped-card::before {
+    content: "";
+    background-image: url('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'); /* GitHub icon URL */
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1; /* Adjust transparency */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Ensure it is behind other content */
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative; /* Ensure it is above the background icon */
+    z-index: 1;
+}
+
+.profile-avatar {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    color: #8b949e;
+}
+
+.profile-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.profile-info a:hover {
+    text-decoration: underline;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+    position: relative; /* Ensure it is above the background icon */
+    z-index: 1;
+}
+
+.stat-card {
+    background-color: #21262d;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1rem;
+}
+
+.stat-card h4 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.commit-graph {
+    margin-top: 20px;
+    position: relative; /* Ensure it is above the background icon */
+    z-index: 1;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.share-btn {
+    margin-top: 20px;
+    padding: 20px 30px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.2rem;
+    position: relative; /* Ensure it is above the background icon */
+    z-index: 1;
+}
+
+.share-btn:hover {
+    background-color: #0056b3;
+}
+
+.input-section {
+    text-align: center;
+    margin: 20px;
+}
+
+input[type="text"] {
+    padding: 20px;
+    width: 300px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+input[type="text"]::placeholder {
+    color: #8b949e;
+}
+
+button {
+    padding: 20px 30px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+select {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    margin-left: 20px;
+    font-size: 1.2rem;
+}
+
+.watermark {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 2;
+}
+
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 20px;
+    background-color: var(--secondary-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    width: 100%;
+}
+
+footer.light-theme {
+    background-color: var(--light-secondary-bg);
+    color: var(--light-text-color);
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+    .github-wrapped-card {
+        padding: 20px;
+    }
+
+    .profile-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .profile-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .profile-info p {
+        font-size: 1rem;
+    }
+
+    .stat-card {
+        padding: 10px;
+    }
+
+    .stat-card h4 {
+        font-size: 1.2rem;
+    }
+
+    .share-btn {
+        padding: 15px 25px;
+    }
+
+    input[type="text"] {
+        width: 250px;
+        padding: 15px;
+        margin-bottom: 10px; /* Add margin for spacing */
+    }
+
+    button {
+        padding: 15px 25px;
+        margin-bottom: 10px; /* Add margin for spacing */
+    }
+
+    select {
+        padding: 15px;
+    }
+
+    footer {
+        padding: 15px;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+}
