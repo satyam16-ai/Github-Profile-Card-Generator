@@ -43,6 +43,9 @@ async function fetchData() {
         });
         const reposData = await reposResponse.json();
 
+        // Fetch language data for each repository
+        const languageData = await fetchLanguageData(username, reposData, GITHUB_TOKEN);
+
         // Calculate key statistics
         const totalRepos = reposData.length;
         const publicRepos = reposData.filter(repo => !repo.private).length;
@@ -91,6 +94,10 @@ async function fetchData() {
                     <h4>Commit Activity in 2024</h4>
                     <canvas id="commitGraph"></canvas>
                 </div>
+                <div class="language-graph">
+                    <h4>Top Languages in 2024</h4>
+                    <div id="languageIcons">${generateLanguageIcons(languageData)}</div>
+                </div>
                 <div class="watermark">GitHub 2024 Wrapped</div>
                 <button class="share-btn" onclick="shareWrapped()">Share</button>
                 <button class="share-btn" onclick="downloadWrapped()">Download</button>
@@ -112,6 +119,42 @@ async function fetchData() {
             </div>
         `;
     }
+}
+
+async function fetchLanguageData(username, reposData, token) {
+    const languageData = {};
+
+    for (const repo of reposData) {
+        const response = await fetch(`https://api.github.com/repos/${username}/${repo.name}/languages`, {
+            headers: {
+                'Authorization': `token ${token}`
+            }
+        });
+        const data = await response.json();
+
+        for (const [language, bytes] of Object.entries(data)) {
+            if (!languageData[language]) {
+                languageData[language] = 0;
+            }
+            languageData[language] += bytes;
+        }
+    }
+
+    return languageData;
+}
+
+function generateLanguageIcons(languageData) {
+    const icons = {
+        JavaScript: '<i class="fas fa-rocket"></i>',
+        Python: '<i class="fas fa-snake"></i>',
+        // Add more language icons as needed
+    };
+
+    const sortedLanguages = Object.entries(languageData).sort((a, b) => b[1] - a[1]);
+
+    return sortedLanguages.map(([language]) => {
+        return `<div class="language-icon">${icons[language] || language}</div>`;
+    }).join('');
 }
 
 async function fetchCommitActivity(username, reposData) {

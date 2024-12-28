@@ -124,6 +124,20 @@ canvas {
     height: auto;
 }
 
+.language-graph {
+    margin-top: 20px;
+    position: relative; /* Ensure it is above the background icon */
+    z-index: 1;
+    text-align: center;
+}
+
+.language-icon {
+    display: inline-block;
+    margin: 10px;
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
 .share-btn {
     margin-top: 20px;
     padding: 20px 30px;
