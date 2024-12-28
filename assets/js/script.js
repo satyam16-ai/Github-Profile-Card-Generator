@@ -57,6 +57,9 @@ async function fetchData() {
         // Fetch commit activity data
         const commitActivity = await fetchCommitActivity(username, reposData);
 
+        // Generate badges HTML
+        const badgesHTML = generateBadges(reposData, userData);
+
         // After data is fetched, generate the graph and stats
         card.innerHTML = `
             <div class="github-wrapped-card">
@@ -97,6 +100,12 @@ async function fetchData() {
                 <div class="language-graph">
                     <h4>Top Languages in 2024</h4>
                     <div id="languageIcons">${generateLanguageIcons(languageData)}</div>
+                </div>
+                <div class="badges-section">
+                    <h4>Achievement Badges</h4>
+                    <div class="badges-grid">
+                        ${badgesHTML}
+                    </div>
                 </div>
                 <div class="watermark">GitHub 2024 Wrapped</div>
                 <button class="share-btn" onclick="shareWrapped()">Share</button>
@@ -271,4 +280,38 @@ function changeCardColor() {
             footer.classList.remove("light-theme");
         }
     }
+}
+
+function generateBadges(reposData, userData) {
+    const badges = [
+        {
+            id: 'star-collector',
+            title: 'Star Collector',
+            icon: '<i class="fas fa-star"></i>',
+            condition: reposData.some(repo => repo.stargazers_count >= 5),
+            description: '5+ stars on a repository'
+        },
+        {
+            id: 'open-source-hero',
+            title: 'Open Source Hero',
+            icon: '<i class="fas fa-code-branch"></i>',
+            condition: reposData.some(repo => repo.forks_count >= 3),
+            description: '3+ forks on a repository'
+        },
+        {
+            id: 'popular-creator',
+            title: 'Popular Creator',
+            icon: '<i class="fas fa-users"></i>',
+            condition: userData.followers >= 10,
+            description: '10+ GitHub followers'
+        }
+    ];
+
+    return badges.map(badge => `
+        <div class="badge ${badge.condition ? 'unlocked' : 'locked'}">
+            ${badge.icon}
+            <h5 class="badge-title">${badge.title}</h5>
+            <p class="badge-description">${badge.description}</p>
+        </div>
+    `).join('');
 }
