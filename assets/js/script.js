@@ -62,7 +62,7 @@ async function fetchData() {
 
         // After data is fetched, generate the graph and stats
         card.innerHTML = `
-            <div class="github-wrapped-card">
+            <div class="github-wrapped-card theme-${document.getElementById("themeSelector").value}">
                 <div class="profile-section">
                     <img src="${userData.avatar_url}" alt="${userData.name}" class="profile-avatar" />
                     <div class="profile-info">
@@ -314,4 +314,19 @@ function generateBadges(reposData, userData) {
             <p class="badge-description">${badge.description}</p>
         </div>
     `).join('');
+}
+
+function changeTheme() {
+    const theme = document.getElementById("themeSelector").value;
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Update card if it exists
+    const card = document.querySelector(".github-wrapped-card");
+    if (card) {
+        card.className = `github-wrapped-card theme-${theme}`;
+    }
+    
+    // Update footer
+    const footer = document.querySelector("footer");
+    footer.className = `theme-${theme}`;
 }
