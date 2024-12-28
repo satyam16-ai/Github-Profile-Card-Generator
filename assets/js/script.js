@@ -20,7 +20,7 @@ async function fetchData() {
     card.innerHTML = `
         <div class="loading-container">
             <div class="loading-spinner"></div>
-            <p>Generating your GitHub 2024 Wrapped...</p>
+            <p>Generating your GitHub 2024 Wrapped... Please wait, this might take a minute or two. Grab a coffee or do a little dance!</p>
         </div>
     `;
 
